@@ -1,0 +1,6 @@
+# axisymmetric_simulation_dispenser_nozzle_OpenFoam
+axisymmetric simulation by interDyMFoam
+commands:
+blockMesh
+setFields
+interDyMFoam
