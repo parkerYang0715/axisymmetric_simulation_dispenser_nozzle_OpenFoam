@@ -1,0 +1,75 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointScalarField;
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    movingWall
+    {
+		type            uniformFixedValue;
+		uniformValue    table
+		(
+			(0           0.0) 
+			(0.000002    0.0)
+			(0.000005   2.6)
+			(0.000050   2.6)
+			(0.000060   0)
+			(0.000070   0)
+			(0.000080   -1)
+			(0.000130   -1)
+			(0.000140    0)
+
+		);
+    }
+
+    tank
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+    pipe
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+	outlet
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+	solderInlet
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+    farField
+    {
+        type            slip;
+    }
+	back
+    {
+        type            wedge;
+    }
+    front
+    {
+        type            wedge;
+    }
+}
+
+// ************************************************************************* //
